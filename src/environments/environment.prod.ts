@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://mygroupsproject.herokuapp.com/api"
+  apiUrl: "https://mygroupsproject.herokuapp.com/api/"
 };
