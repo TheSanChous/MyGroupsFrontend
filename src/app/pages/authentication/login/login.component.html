@@ -1,0 +1,21 @@
+<div class="login-div">
+  <div class="container w-auto p-4 mat-elevation-z3 d-flex flex-column align-items-center">
+    <div class="text-center h4 mb-3">Login</div>
+    <form [formGroup]="loginForm">
+      <mat-form-field appearance="fill" (invalid)="loginForm.controls['email'].invalid">
+        <mat-label >Email</mat-label>
+        <input matInput type="email" [formControlName]="'email'">
+      </mat-form-field>
+      <mat-form-field appearance="fill" (invalid)="loginForm.controls['password'].invalid">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="loginSubmit()" [disabled]="isLoading">
+      Login
+    </button>
+    <a class="pt-3 text-secondary" routerLink="/register">
+      Don't have an account? Click here to register
+    </a>
+  </div>
+</div>

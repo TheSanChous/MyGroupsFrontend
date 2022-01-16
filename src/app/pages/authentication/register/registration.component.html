@@ -1,0 +1,29 @@
+<div class="login-div">
+  <div class="container w-auto p-5 mat-elevation-z3 d-flex flex-column align-items-center">
+    <div class="text-center h4 mb-3">Register</div>
+    <form [formGroup]="registrationForm">
+      <mat-form-field appearance="fill" (invalid)="registrationForm.controls['name'].invalid">
+        <mat-label >Name</mat-label>
+        <input matInput type="text" [formControlName]="'name'">
+      </mat-form-field>
+      <mat-form-field appearance="fill" (invalid)="registrationForm.controls['surname'].invalid">
+        <mat-label >Surname</mat-label>
+        <input matInput type="text" [formControlName]="'surname'">
+      </mat-form-field>
+      <mat-form-field appearance="fill" (invalid)="registrationForm.controls['email'].invalid">
+        <mat-label >Email</mat-label>
+        <input matInput type="email" id="email" [formControlName]="'email'">
+      </mat-form-field>
+      <mat-form-field appearance="fill" (invalid)="registrationForm.controls['password'].invalid">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="loginSubmit()" [disabled]="isLoading">
+      Sign Up
+    </button>
+    <a class="pt-3 text-secondary" routerLink="/login">
+      Already have an account? Click here to login
+    </a>
+  </div>
+</div>

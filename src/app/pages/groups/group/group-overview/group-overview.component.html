@@ -1,0 +1,21 @@
+<div class="container w-100">
+  <div class="d-flex justify-content-between">
+    <div class="p-3">
+      <h1 class="font-weight-bold">{{group.title}}</h1>
+      <h3 class="d-flex align-content-center align-items-center">
+        <span>Identifier - </span><span><b><i>{{group.identifier}}</i></b></span>
+        <button mat-icon-button (click)="copyIdentifierClick()">
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </h3>
+      <div>{{group.description}}</div>
+    </div>
+    <div class="p-3 justify-content-end">
+      <button mat-stroked-button (click)="leaveGroup()">
+        Leave group
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</div>

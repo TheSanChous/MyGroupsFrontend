@@ -1,0 +1,23 @@
+<div class="m-5">
+  <div class="p-3 container border rounded mat-elevation-z3 ">
+    <form [formGroup]="createModel" class="d-flex flex-column">
+      <h1>Create Group</h1>
+      <p>By creating a group, you automatically become its administrator.
+        <br>
+        The name of the group can be seen by other members of the group.</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Group Title</mat-label>
+        <input matInput type="text" formControlName="title">
+      </mat-form-field>
+      <br>
+      <p>Describe your group so others can understand what it is about. It is optional now</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput type="text" formControlName="description">
+      </mat-form-field>
+      <button mat-button class="border" (click)="createClick()" [disabled]="isLoading">
+        Create
+      </button>
+    </form>
+  </div>
+</div>

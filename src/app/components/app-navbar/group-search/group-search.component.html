@@ -1,0 +1,5 @@
+<mat-form-field appearance="legacy" class="my-form-field">
+  <mat-select disableRipple style="font-size: 18px;">
+    <mat-option *ngFor="let group of groups" [value]="group" (onSelectionChange)="groupSelected($event)">{{group.title}}</mat-option>
+  </mat-select>
+</mat-form-field>

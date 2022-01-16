@@ -1,0 +1,16 @@
+<div class="container" *ngIf="groups.length != 0; else noContent">
+  <div *ngFor="let group of groups">
+    <br>
+    <mat-card routerLink="/group/{{group.identifier}}" class="elevation-hover">
+      <mat-card-title>{{group.title}}</mat-card-title>
+      <mat-card-subtitle>{{group.description}}</mat-card-subtitle>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<ng-template #noContent>
+  <div class="container p-3">
+    <h1 class="text-center font-weight-bold">No groups</h1>
+  </div>
+</ng-template>

@@ -1,0 +1,8 @@
+.login-div {
+  position:center;
+}
+
+mat-form-field, button {
+  min-width: 350px;
+  width: 100%;
+}

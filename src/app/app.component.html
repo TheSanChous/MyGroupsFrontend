@@ -1,0 +1,10 @@
+<mat-drawer-container [hasBackdrop]="true">
+  <mat-drawer #sidebar mode="over" >
+    <app-app-sidebar [sidebar]="sidebar" class="mat-elevation-z6" *ngIf="authenticationCore.isAuthenticated()"></app-app-sidebar>
+  </mat-drawer>
+  <mat-drawer-content style="height: 100vh;">
+    <app-app-navbar [sidebar]="sidebar"></app-app-navbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+<ngx-spinner name="main"></ngx-spinner>

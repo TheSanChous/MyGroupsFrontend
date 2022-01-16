@@ -1,0 +1,16 @@
+<mat-toolbar class="mat-elevation-z6 d-flex justify-content-between" color="primary">
+    <div>
+      <button mat-icon-button (click)="menuClick()" [disabled]="!isAuthenticated" class="">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div>
+      My Groups
+      <span *ngIf="currentGroup.getGroup()!=null"> - {{currentGroup.getGroup()?.title}}</span>
+    </div>
+    <div>
+      <button mat-icon-button >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+</mat-toolbar>

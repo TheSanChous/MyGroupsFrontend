@@ -1,0 +1,53 @@
+<div style="min-width: 5rem; max-width: 25rem;">
+  <div class="p-4">
+    <div class="d-flex justify-content-between">
+      <div class="justify-content-center">
+        <div>
+          <img class="avatar" src="https://www.pngarts.com/files/6/User-Avatar-in-Suit-PNG.png">
+        </div>
+        <div class="text-center">{{user?.email}}</div>
+      </div>
+      <div>
+        <button mat-icon-button (click)="logoutClick()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+    </div>
+    <h1 class="p-0 m-0">{{user?.name}} {{user?.surname}}</h1>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+    <button mat-button class="side-button">
+      <mat-icon>newspaper</mat-icon>
+      <span>Newspaper</span>
+    </button>
+    <button mat-button class="side-button">
+      <mat-icon>format_list_bulleted</mat-icon>
+      <span>Tasks</span>
+    </button>
+    <button mat-button class="side-button">
+      <mat-icon>calendar_month</mat-icon>
+      <span>Schedule</span>
+    </button>
+    <button mat-button class="side-button" routerLink="/groups" (click)="sidebar.toggle()">
+      <mat-icon>group</mat-icon>
+      <span>My groups</span>
+    </button>
+    <button mat-button class="side-button" routerLink="/groups/join" (click)="sidebar.toggle()">
+      <mat-icon>group_add</mat-icon>
+      <span>Join group</span>
+    </button>
+    <button mat-button class="side-button" routerLink="/groups/create" (click)="sidebar.toggle()">
+      <mat-icon>add</mat-icon>
+      <span>Create group</span>
+    </button>
+    <button mat-button class="side-button">
+      <mat-icon>settings</mat-icon>
+      <span>Settings</span>
+    </button>
+    <button mat-button class="side-button">
+      <mat-icon>help_outline</mat-icon>
+      <span>About</span>
+    </button>
+  </div>
+</div>

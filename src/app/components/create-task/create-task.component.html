@@ -1,0 +1,50 @@
+<div class="w-100">
+  <div class="container">
+    <form>
+      <h1 class="font-weight-bold">Create Task</h1>
+      <p>Briefly describe the task here</p>
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Task title" [formControl]="title">
+      </mat-form-field>
+      <p>Describe the task in detail here</p>
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput [rows]="2" [formControl]="description"></textarea>
+      </mat-form-field>
+      <p>Select a deadline for submitting a task </p>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Deadline</mat-label>
+        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date"
+               [min]="deadlinePickerOptions.min"
+               [readonly]="true"
+               [formControl]="deadline"
+        >
+        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker [showSeconds]="false">
+          <!-- Custom icon or text of Apply icon -->
+          <ng-template>
+            <!-- <mat-icon>star</mat-icon> -->
+            <span>OK</span>
+          </ng-template>
+        </ngx-mat-datetime-picker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <div>
+          <mat-toolbar>
+            <input matInput [(ngModel)]="fileAttr" readonly name="name" />
+            <button mat-stroked-button>
+              Browse File
+            </button>
+          </mat-toolbar>
+          <input type="file" #fileInput id="uploadFile" (change)="uploadFileEventHandler($event)" name="uploadFile" [multiple]="false"
+                 accept="*/*" />
+        </div>
+      </mat-form-field>
+      <button mat-stroked-button class="w-100" (click)="createTaskClick()" [disabled]="title.invalid || deadline.invalid">
+        Create Task
+      </button>
+    </form>
+  </div>
+</div>

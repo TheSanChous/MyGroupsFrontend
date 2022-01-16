@@ -1,0 +1,7 @@
+<mat-tab-group dynamicHeight mat-align-tabs="center">
+  <mat-tab label="Overview"><app-group-overview [groupId]="group.id"></app-group-overview></mat-tab>
+  <mat-tab label="Schedule"> Content 2 </mat-tab>
+  <mat-tab label="Tasks"><app-group-tasks [groupId]="group.id"></app-group-tasks></mat-tab>
+  <mat-tab label="Members"><app-group-members [group]="group"></app-group-members></mat-tab>
+  <mat-tab label="Settings"> Content 3 </mat-tab>
+</mat-tab-group>

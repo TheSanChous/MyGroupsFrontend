@@ -1,0 +1,14 @@
+<ngx-spinner></ngx-spinner>
+<div class="d-flex flex-column">
+  <h1 class="font-weight-bold pt-3"> {{task.title}} - Task</h1>
+  <p>{{task.deadline.toLocaleString()}}</p>
+  <mat-divider></mat-divider>
+  <h4>{{task.description}}</h4>
+  <div *ngIf="taskFile != null">
+    <h1>File - {{taskFile?.name}}</h1>
+    <button mat-stroked-button (click)="downloadFileClick()">
+      <mat-icon>file_download</mat-icon>
+      Download
+    </button>
+  </div>
+</div>
