@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z6 d-flex justify-content-between" color="primary">
+<mat-toolbar class="sticky-top mat-elevation-z6 d-flex justify-content-between" color="primary">
     <div>
       <button mat-icon-button (click)="menuClick()" [disabled]="!isAuthenticated" class="">
         <mat-icon>menu</mat-icon>
@@ -9,8 +9,22 @@
       <span *ngIf="currentGroup.getGroup()!=null"> - {{currentGroup.getGroup()?.title}}</span>
     </div>
     <div>
-      <button mat-icon-button >
+      <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
       </button>
     </div>
 </mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu>

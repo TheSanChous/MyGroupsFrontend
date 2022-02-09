@@ -1,14 +1,74 @@
 <ngx-spinner></ngx-spinner>
-<div class="d-flex flex-column">
-  <h1 class="font-weight-bold pt-3"> {{task.title}} - Task</h1>
-  <p>{{task.deadline.toLocaleString()}}</p>
-  <mat-divider></mat-divider>
-  <h4>{{task.description}}</h4>
-  <div *ngIf="taskFile != null">
+<div class="d-flex justify-content-between">
+  <div class="flex-column">
+    <h1 class="font-weight-bold pt-3"> {{task.title}}</h1>
+    <h4 class="text-success">Deadline - {{task.deadline | date: 'short'}}</h4>
+    <h4>{{task.description}}</h4>
+  </div>
+  <div *ngIf="taskFile != null" class="m-3 p-3 mat-elevation-z1 rounded">
     <h1>File - {{taskFile?.name}}</h1>
-    <button mat-stroked-button (click)="downloadFileClick()">
-      <mat-icon>file_download</mat-icon>
-      Download
-    </button>
+      <button mat-stroked-button (click)="downloadFileClick()">
+        <mat-icon>file_download</mat-icon>
+        Download
+      </button>
   </div>
 </div>
+<mat-divider></mat-divider>
+<div *ngIf="role != 'Member' else uploadTask" class="mt-2">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let task of completedTasks">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{task.uploadedAt | date :'short'}}
+        </mat-panel-title>
+        <mat-panel-description class="d-flex justify-content-between px-5">
+          <span>{{task.creator.name}} {{task.creator.surname}}</span>
+          <span *ngIf="task.grade != null" class="mat-elevation-z1 rounded text-success px-1 m-1"><b>{{task.grade.value}}</b></span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <h3>{{task.description}}</h3>
+        <div class="d-flex justify-content-between">
+          <a mat-stroked-button *ngIf="task.fileUrl != null" href="{{task.fileUrl}}">
+            <mat-icon>download</mat-icon>
+            Attached File
+          </a>
+          <button *ngIf="task.grade == null" mat-stroked-button color="primary" (click)="estimateClick(task.id)">
+            <mat-icon>workspace_premium</mat-icon>
+            Estimate
+          </button>
+        </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<ng-template #uploadTask>
+  <div>
+    <div *ngIf="completedTasks.length == 0 else completedTaskView" class="d-flex py-3">
+      <button mat-stroked-button class="w-100" (click)="uploadCompletedTaskClick()">
+        <mat-icon>upload</mat-icon>
+        Upload Completed Task
+      </button>
+    </div>
+  </div>
+</ng-template>
+<ng-template #completedTaskView>
+  <h1>Completed task:</h1>
+  <mat-expansion-panel *ngFor="let task of completedTasks">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{task.uploadedAt | date :'short'}}
+      </mat-panel-title>
+      <mat-panel-description class="d-flex justify-content-between px-5">
+        <span>{{task.creator.name}} {{task.creator.surname}}</span>
+        <span *ngIf="task.grade != null" class="mat-elevation-z1 rounded text-success px-1 m-1"><b>{{task.grade.value}}</b></span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <h3>Your comment: {{task.description}}</h3>
+    <h3>Teacher comment: {{task.grade.description}}</h3>
+    <div class="d-flex justify-content-between">
+      <a mat-stroked-button *ngIf="task.fileUrl != null" href="{{task.fileUrl}}">
+        <mat-icon>download</mat-icon>
+        Attached File
+      </a>
+    </div>
+  </mat-expansion-panel>
+</ng-template>

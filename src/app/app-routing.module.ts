@@ -11,12 +11,14 @@ import {RegistrationComponent} from "./pages/authentication/register/registratio
 import {JoinGroupComponent} from "./pages/groups/join-group/join-group.component";
 import {GroupTaskComponent} from "./pages/groups/group/group-tasks/group-task/group-task.component";
 import {ErrorPageComponent} from "./pages/site/error-page/error-page.component";
+import {TasksComponent} from "./pages/tasks/tasks.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "error", component: ErrorPageComponent },
   { path: "register", component: RegistrationComponent },
   { path: "", component: HomeComponent, canActivate: [AuthenticationGuard] },
+  { path: "tasks", component: TasksComponent, canActivate: [AuthenticationGuard] },
   { path: "groups", component: UserGroupsComponent, canActivate: [AuthenticationGuard] },
   { path: "group/:id", component: GroupComponent, canActivate: [AuthenticationGuard] },
   { path: "groups/create", component: CreateGroupComponent, canActivate: [AuthenticationGuard] },
@@ -24,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

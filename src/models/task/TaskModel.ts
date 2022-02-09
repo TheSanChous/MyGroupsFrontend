@@ -1,7 +1,9 @@
+import {GroupModel} from "../group/GroupModel";
+
 export interface TaskModel {
   id: string,
   title: string,
   description: string,
-  groupId: string,
+  group: GroupModel,
   fileId: string
 }

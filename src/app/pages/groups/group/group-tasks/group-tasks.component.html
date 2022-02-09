@@ -1,13 +1,13 @@
 <div class="container p-3" *ngIf="tasks.length != 0; else noContent">
-  <div *ngIf="selectedTask == null else groupTask">
-    <div class="container" *ngFor="let task of tasks">
-      <mat-card class="h-100" (click)="selectedTask=task">
+  <div *ngIf="selectedTask == null else groupTask" class="d-flex flex-wrap">
+    <div class="container task-card m-1" *ngFor="let task of tasks">
+      <mat-card class="h-100 elevation-hover overflow-hidden" (click)="selectedTask=task">
         <div class="w-100 d-flex justify-content-between">
           <mat-card-title class="w-100">
               <span>{{task.title}}</span>
           </mat-card-title>
         </div>
-        <mat-card-subtitle>{{task.description}}</mat-card-subtitle>
+        <mat-card-subtitle class="overflow-hidden">{{task.description}}</mat-card-subtitle>
         <mat-card-actions>
         </mat-card-actions>
       </mat-card>
@@ -20,16 +20,20 @@
 </button>
 <ng-template #groupTask>
   <div class="container">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mb-3 align-content-center align-items-center">
       <button mat-stroked-button (click)="selectedTask = null">
         <mat-icon>arrow_back</mat-icon>
         Back
       </button>
-      <button mat-stroked-button *ngIf="role!='Member'" (click)="deleteTaskClick(selectedTask!.id)">
+      <h1><b>Task</b></h1>
+      <button mat-stroked-button *ngIf="role!='Member'"
+              color="warn"
+              (click)="deleteTaskClick(selectedTask!.id)">
         Delete
         <mat-icon>delete</mat-icon>
       </button>
     </div>
+    <mat-divider></mat-divider>
     <app-group-task [taskId]="selectedTask?.id!"></app-group-task>
   </div>
 </ng-template>

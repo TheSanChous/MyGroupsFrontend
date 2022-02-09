@@ -21,14 +21,15 @@
       <mat-icon>newspaper</mat-icon>
       <span>Newspaper</span>
     </button>
-    <button mat-button class="side-button">
+    <button mat-button class="side-button" routerLink="/tasks" (click)="sidebar.toggle()">
       <mat-icon>format_list_bulleted</mat-icon>
       <span>Tasks</span>
     </button>
-    <button mat-button class="side-button">
+<!--    <button mat-button class="side-button">
       <mat-icon>calendar_month</mat-icon>
       <span>Schedule</span>
     </button>
+    -->
     <button mat-button class="side-button" routerLink="/groups" (click)="sidebar.toggle()">
       <mat-icon>group</mat-icon>
       <span>My groups</span>

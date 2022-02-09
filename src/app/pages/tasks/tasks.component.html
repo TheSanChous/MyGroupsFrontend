@@ -1,0 +1,23 @@
+<div class="d-flex container p-3 flex-wrap" *ngIf="tasks.length != 0; else noContent">
+  <div class="container task-card m-1" *ngFor="let task of tasks">
+    <mat-card class="h-100 elevation-hover overflow-hidden" (click)="openTaskClick(task)">
+      <div class="w-100 d-flex justify-content-between">
+        <mat-card-title class="w-100">
+          {{task.title}}
+        </mat-card-title>
+      </div>
+      <mat-card-subtitle class="overflow-hidden">
+        {{task.group.title}}
+      </mat-card-subtitle>
+      <p>{{task.description}}</p>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+    <br/>
+  </div>
+</div>
+<ng-template #noContent>
+  <div class="container p-3">
+    <h1 class="text-center font-weight-bold">No tasks</h1>
+  </div>
+</ng-template>

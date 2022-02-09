@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {GroupService} from "../../../../../api/groups/group.service";
 import {GroupModel} from "../../../../../models/group/GroupModel";
 import {TaskService} from "../../../../../api/tasks/task.service";
@@ -17,6 +17,10 @@ export class GroupTasksComponent implements OnInit {
 
   @Input()
   groupId!: string;
+
+  @Input()
+  selectTaskId!: string;
+
   group!: GroupModel;
 
   tasks!: TaskModel[];
@@ -41,6 +45,10 @@ export class GroupTasksComponent implements OnInit {
     this.groupService.getTasks(this.groupId)
       .subscribe((tasks) => {
         this.tasks = tasks;
+        if(this.selectTaskId != null) {
+          this.selectedTask = this.tasks.find(task => task.id == this.selectTaskId) ?? null;
+          console.log(this.selectTaskId);
+        }
       }, error => {
         console.log(error);
         let errors = error.errors.join(', ')

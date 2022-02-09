@@ -56,13 +56,12 @@ export class CreateTaskComponent implements OnInit {
   }
 
   createTaskClick() {
-    let task = {
-      groupId: this.currentGroup.getGroup()?.id,
+    const task = {
+      groupId: this.currentGroup.getGroup()?.id!,
       title: this.title.value,
       description: this.description.value,
       deadline: this.deadline.value.toISOString(),
     };
-    console.log(task);
     this.taskService.createTask(task)
       .subscribe((taskId) => {
       if(this.file == null) {

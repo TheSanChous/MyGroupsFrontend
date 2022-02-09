@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {GroupModel} from "../../../../models/group/GroupModel";
 import {GroupService} from "../../../../api/groups/group.service";
 import {ActivatedRoute} from "@angular/router";
@@ -13,15 +13,37 @@ import {CurrentGroupService} from "../../../../core/groups/current-group.service
 })
 export class GroupComponent implements OnInit, OnDestroy {
 
+  @ViewChild('tabs', { static: false }) tabs!: ElementRef;
+
   group!: GroupModel;
+
+  selectedTab: number = 0;
+
+  routeTaskId!: string;
 
   failedLoadGroup: boolean = false;
 
   constructor(private readonly groupService: GroupService,
               private readonly activatedRoute: ActivatedRoute,
-              private readonly currentGroup: CurrentGroupService) { }
+              private readonly currentGroup: CurrentGroupService) {
+    this.activatedRoute.fragment
+      .pipe(
+        map(fragment => new URLSearchParams(fragment!)),
+        map(params => ({
+          taskId: params.get('taskId')
+        }))
+      )
+      .subscribe(res => {
+        if(res.taskId != null) {
+          console.log(res.taskId);
+          this.selectedTab = 1
+          this.routeTaskId = res.taskId;
+        }
+      });
+  }
 
   ngOnInit(): void {
+
     this.loadGroup();
   }
 

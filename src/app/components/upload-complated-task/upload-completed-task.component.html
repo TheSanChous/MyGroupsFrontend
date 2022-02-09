@@ -1,0 +1,34 @@
+<div class="w-100">
+  <div class="container">
+    <form>
+      <h1 class="font-weight-bold">Upload Completed Task</h1>
+      <p>Describe the completed task in detail here</p>
+      <mat-form-field class="w-100" appearance="fill" (invalid)="description.invalid">
+        <mat-label>Description</mat-label>
+        <textarea matInput [rows]="2" [formControl]="description"></textarea>
+      </mat-form-field>
+      <div class="d-flex py-3 justify-content-between align-items-center align-content-center">
+        <button mat-stroked-button color="primary"
+                class="col-4"
+                (click)="fileInput.click()">
+          Browse File
+          <input #fileInput
+                 [required]="true"
+                 type="file"
+                 name="uploadFile"
+                 accept="*/*"
+                 id="uploadFile"
+                 (change)="uploadFileEventHandler($event)"
+                 [multiple]="false"
+                 [hidden]="true"/>
+        </button>
+        <b>
+          {{fileInput?.files?.item(0)?.name ?? ""}}
+        </b>
+      </div>
+      <button mat-stroked-button color="primary" class="w-100" (click)="uploadTaskClick()" [disabled]="description.invalid || !fileInput.checkValidity()">
+        Create Task
+      </button>
+    </form>
+  </div>
+</div>

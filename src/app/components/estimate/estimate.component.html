@@ -1,0 +1,30 @@
+<div class="w-100">
+  <div class="container">
+    <form>
+      <h1 class="font-weight-bold">Estimate Completed Task</h1>
+      <p>Describe the completed task in detail here</p>
+      <mat-form-field class="w-100" appearance="fill" (invalid)="description.invalid">
+        <mat-label>Description</mat-label>
+        <textarea matInput [rows]="2" [formControl]="description"></textarea>
+      </mat-form-field>
+      <div class="mat-elevation-z3 rounded p-3 my-3">
+        <h3>Value: {{value.value}}</h3>
+        <mat-slider
+          color="primary"
+          class="w-100"
+          [max]="12"
+          [min]="1"
+          [step]="1"
+          [tickInterval]="1"
+          [thumbLabel]="true"
+          [formControl]="value">
+        </mat-slider>
+      </div>
+      <button mat-stroked-button class="w-100" color="primary" [disabled]="description.invalid || value.invalid"
+      (click)="submitClick()">
+        <mat-icon>workspace_premium</mat-icon>
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

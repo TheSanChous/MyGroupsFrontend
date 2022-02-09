@@ -8,7 +8,7 @@ export class CurrentGroupService {
 
   constructor() { }
 
-  getGroup() {
+  getGroup(): GroupModel | null {
     return JSON.parse(sessionStorage.getItem('currentGroup')!);
   }
 

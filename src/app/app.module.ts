@@ -55,6 +55,15 @@ import {
 } from "@angular-material-components/datetime-picker";
 import {HttpSpinerInterceptor} from "../core/http/http-spiner.interceptor";
 import { ErrorPageComponent } from './pages/site/error-page/error-page.component';
+import { UploadCompletedTaskComponent } from './components/upload-complated-task/upload-completed-task.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {DatePipe} from "@angular/common";
+import { EstimateComponent } from './components/estimate/estimate.component';
+import {MatSliderModule} from "@angular/material/slider";
+import { TasksComponent } from './pages/tasks/tasks.component';
+import { GroupSettingsComponent } from './pages/groups/group/group-settings/group-settings.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -76,7 +85,11 @@ import { ErrorPageComponent } from './pages/site/error-page/error-page.component
     GroupMembersComponent,
     CreateTaskComponent,
     GroupTaskComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    UploadCompletedTaskComponent,
+    EstimateComponent,
+    TasksComponent,
+    GroupSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -114,6 +127,10 @@ import { ErrorPageComponent } from './pages/site/error-page/error-page.component
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
     NgxMatNativeDateModule,
+    MatMenuModule,
+    MatExpansionModule,
+    MatSliderModule,
+    MatCheckboxModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

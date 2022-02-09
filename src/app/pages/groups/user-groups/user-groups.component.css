@@ -2,3 +2,7 @@ a {
   all: unset;
 }
 
+.group-card {
+  width: 16rem;
+  height: 10rem;
+}
